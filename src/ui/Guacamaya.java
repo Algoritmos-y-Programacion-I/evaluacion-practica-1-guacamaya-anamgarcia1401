@@ -94,7 +94,7 @@ public class Guacamaya {
      */
     public static void establecerCantidadVendida() {
 
-        System.out.println("\nDigite el numero de referencias de producto diferentes vendidas en el dia ");
+       System.out.println("\nDigite el numero de referencias de producto diferentes vendidas en el dia:  ");
         int referencias = reader.nextInt();
 
         precios = new double[referencias];
@@ -103,36 +103,53 @@ public class Guacamaya {
     }
 
     public static void solicitarDatos(){
-
         
-     
+        for (int i = 0; i < precios.length; i++) {
+            System.out.print("Ingresa el precio de la referencia" + (i+1) + ": ");
+            precios[i] = reader.nextDouble();
+            System.out.print("Ingresa la cantidad de referencias de productos vendidas" + (i+1) + ": ");
+            unidades[i] = reader.nextInt();
+        }
+
     }
 
     public static int calcularTotalUnidadesVendidas(){
-
-        return 0;
-
-
+        int total = 0;
+        for (int i = 0; i < unidades.length; i++) {
+            total += unidades[i];
+        }
+        return total;
     }
 
     public static double calcularPrecioPromedio(){
 
-        return 0;
+        double sumaprecio = 0;
+        for (int i = 0; i < precios.length; i++) {
+            sumaprecio += precios[i];
+        }
+
+        return sumaprecio/precios.length;
 
 
     }
 
     public static double calcularVentasTotales(){
-
-        return 0;
-
+    double totalventas = 0;
+        for (int i = 0; i < precios.length; i++) {
+            totalventas += precios[i]*unidades[i];
+        }
+        return totalventas;
 
     }
 
     public static int consultarReferenciasSobreLimite(double limite){
-
-        return 0;
-
+int count = 0;
+        for (int i = 0; i < precios.length; i++) {
+            if (precios[i]*unidades[i] > limite){
+                count++;
+            }
+        }
+        return count;
     }
 
 }
